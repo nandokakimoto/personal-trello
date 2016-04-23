@@ -8,6 +8,11 @@ app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redi
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 
+// Compile less files
+var less = require('less-middleware');
+app.use(less(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
+
 // Prepare app to use pug template engine
 app.set('views', './views');
 app.set('view engine', 'pug');
