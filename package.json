@@ -12,5 +12,8 @@
     "trello"
   ],
   "author": "Fernando",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
