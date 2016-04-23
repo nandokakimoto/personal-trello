@@ -3,10 +3,13 @@
 var express = require('express');
 var app = express();
 
-// Set views directory
-app.set('views', './views');
+// Prepare app to bootstrap and jquery
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 
-// Set view engine to jade/pug
+// Prepare app to use pug template engine
+app.set('views', './views');
 app.set('view engine', 'pug');
 
 app.get('/', function(req, res){
