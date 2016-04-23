@@ -17,10 +17,26 @@ html(lang="en")
       script(src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js")
     <![endif]-->
   body
-    h1 Trello
-    p Trello is the free, flexible, and visual way to organize anything with anyone.
+    nav.navbar.navbar-inverse.narvar-fixed-top
+      div.container
+        div.navbar-header
+          button(type="button", data-toggle="collapse", data-target="#navbar", aria-controls="navbar", class="navbar-toggle collapsed")
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          <a class="navbar-brand" href="#"></a>
 
-    <!-- Bootstrap -->
+        div#navbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href="#") Home
+
+    div.container
+      div.starter-template
+        h1 Trello
+        p Trello is the free, flexible, and visual way to organize anything with anyone.
+
     script(src="js/jquery.min.js")
     script(src="js/bootstrap.min.js")
   </body>
