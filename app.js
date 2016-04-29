@@ -21,8 +21,14 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 
+// Default route
 app.get('/', function(req, res){
   res.render('home');
+});
+
+// Route to provide angular partials
+app.get('/partials/:name', function(req, res){
+  res.render('partials/' + req.params.name);
 });
 
 // Custom handlers
