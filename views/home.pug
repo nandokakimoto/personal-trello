@@ -1,6 +1,6 @@
 //- home.pug
 doctype html
-html(lang="en")
+html(lang="en", ng-app="customTrello")
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
@@ -47,6 +47,9 @@ html(lang="en")
 
     script(src="/js/jquery.min.js")
     script(src="/js/bootstrap.min.js")
+    script(src="/js/angular.min.js")
+    script(src="/js/angular-route.min.js")
+    script(src="/js/controller.js")
     block javascripts
   </body>
 </html>

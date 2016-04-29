@@ -5,10 +5,12 @@ var app = express();
 
 app.set('port', (process.env.PORT || 3000));
 
-// Prepare app to bootstrap and jquery
-app.use('/js', express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jQuery
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect bootstrap JS
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+// Serve static files from node_modules folder
+app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
+app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
+app.use('/js', express.static(__dirname + '/node_modules/angular/'));
+app.use('/js', express.static(__dirname + '/node_modules/angular-route/'));
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
 // Compile less files
 var less = require('less-middleware');
