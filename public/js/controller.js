@@ -9,6 +9,14 @@ trello.config(['$routeProvider',
         templateUrl: 'partials/welcome',
         controller: ''
       }).
+      when('/signup', {
+        templateUrl: 'partials/signup',
+        controller: ''
+      }).
+      when('/signin', {
+        templateUrl: 'partials/signin',
+        controller: ''
+      }).
       otherwise({
         redirectTo: '/home'
       });

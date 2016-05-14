@@ -31,10 +31,6 @@ app.get('/partials/:name', function(req, res){
   res.render('partials/' + req.params.name);
 });
 
-// Custom handlers
-require('./signin')(app);
-require('./signup')(app);
-
 app.listen(app.get('port'), function(){
   console.log('Server is listening on port', app.get('port'));
 });
