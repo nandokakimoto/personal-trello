@@ -1,7 +1,23 @@
 //- signup.pug
 
+block stylesheets
+  link(href="/css/signup.css", rel="stylesheet")
+
 block title
-  title Sign-up to a new Trello account
+  title Create a Trello Account
 
 block content
-  h1 Sign-up
+  div.container.center-container.signup-container
+    div.row
+      h1 Create a Trello Account
+      form#signup-form
+        div.form-group
+          label(for="name") Name
+          input(id="name", class="form-control", placeholder="e.g., Ender Wiggin")
+        div.form-group
+          label(for="email-address") Email
+          input(type="email", id="email-address", class="form-control", placeholder="e.g., ender@battle.edu")
+        div.form-group
+          label(for="password") Password
+          input(type="password", id="password", class="form-control", placeholder="e.g., ********")
+        button(type="submit", class="btn btn-success") Create New Account
