@@ -13,11 +13,11 @@ block content
       form#signup-form(action="/users/signup", method="POST")
         div.form-group
           label(for="name") Name
-          input(id="name", class="form-control", placeholder="e.g., Ender Wiggin", required="true")
+          input(id="name", name="name", class="form-control", placeholder="e.g., Ender Wiggin", required="true")
         div.form-group
           label(for="email-address") Email
-          input(type="email", id="email-address", class="form-control", placeholder="e.g., ender@battle.edu", required="true")
+          input(type="email", id="email-address", name="email", class="form-control", placeholder="e.g., ender@battle.edu", required="true")
         div.form-group
           label(for="password") Password
-          input(type="password", id="password", class="form-control", placeholder="e.g., ********", required="true")
+          input(type="password", id="password", name="password", class="form-control", placeholder="e.g., ********", required="true")
         button(type="submit", class="btn btn-success") Create New Account

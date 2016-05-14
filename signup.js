@@ -1,9 +1,9 @@
 'use strict';
 
-var signup = (app) => {
-  app.post('/users/signup', (req, res) => {
+var signup = (app, urlencodedParser) => {
+  app.post('/users/signup', urlencodedParser, (req, res) => {
     // Save user to the database;
-    res.write('This is not ready yet...');
+    res.write('Welcome, ' + req.body.name + '!');
     res.end();
   });
 };

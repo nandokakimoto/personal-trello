@@ -1,9 +1,13 @@
 'use strict';
 
 var express = require('express');
-var app = express();
+var bodyParser = require('body-parser');
 
+var app = express();
 app.set('port', (process.env.PORT || 3000));
+
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // Serve static files from node_modules folder
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
@@ -32,7 +36,7 @@ app.get('/partials/:name', (req, res) => {
 });
 
 // Custom handlers
-require('./signup')(app);
+require('./signup')(app, urlencodedParser);
 
 app.listen(app.get('port'), () => {
   console.log('Server is listening on port', app.get('port'));
