@@ -2,9 +2,11 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var mongoose = require ("mongoose");
 
 var app = express();
 app.set('port', (process.env.PORT || 3000));
+app.set('mongo_url', (process.env.MONGOLAB_URI || 'mongodb://localhost/custom_trello'));
 
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -33,6 +35,15 @@ app.get('/', function(req, res){
 // Route to provide angular partials
 app.get('/partials/:name', (req, res) => {
   res.render('partials/' + req.params.name);
+});
+
+// Connecto to the database
+mongoose.connect(app.get('mongo_url'), (err, res) => {
+  if (err) {
+    console.log('ERROR connecting to: ' + app.get('mongo_url') + '. ' + err);
+  } else {
+    console.log('Succeeded connected to: ' + app.get('mongo_url'));
+  }
 });
 
 // Custom handlers
