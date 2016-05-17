@@ -6,7 +6,7 @@ var mongoose = require ("mongoose");
 
 var app = express();
 app.set('port', (process.env.PORT || 3000));
-app.set('mongo_url', (process.env.MONGOLAB_URI || 'mongodb://localhost/custom_trello'));
+app.set('mongo_url', (process.env.MONGODB_URI || 'mongodb://localhost/custom_trello'));
 
 // create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
