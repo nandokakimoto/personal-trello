@@ -1,13 +1,14 @@
 'use strict';
 
-const mongoose = require('mongoose');
+var mongoose = require('mongoose');
+var passportLocalMongoose = require('passport-local-mongoose');
 
-const userSchema = mongoose.Schema({
+var User = mongoose.Schema({
   name: {
     type: String,
     required: true
   },
-  email: {
+  username: {
     type: String,
     required: true,
     unique: true
@@ -20,5 +21,6 @@ const userSchema = mongoose.Schema({
   updated_at: Date
 });
 
-var User = mongoose.model('User', userSchema);
-module.exports = User;
+User.plugin(passportLocalMongoose);
+
+module.exports = mongoose.model('User', User);

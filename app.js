@@ -1,6 +1,7 @@
 'use strict';
 
 var express = require('express');
+var passport = require('passport');
 var bodyParser = require('body-parser');
 var mongoose = require ("mongoose");
 
@@ -8,8 +9,11 @@ var app = express();
 app.set('port', (process.env.PORT || 3000));
 app.set('mongo_url', (process.env.MONGODB_URI || 'mongodb://localhost/custom_trello'));
 
-// create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+// Create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+// Create application/json parser
+var jsonParser = bodyParser.json();
 
 // Serve static files from node_modules folder
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
@@ -17,6 +21,10 @@ app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/js', express.static(__dirname + '/node_modules/angular/'));
 app.use('/js', express.static(__dirname + '/node_modules/angular-route/'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+
+// Setup passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Compile less files
 var less = require('less-middleware');
@@ -47,7 +55,7 @@ mongoose.connect(app.get('mongo_url'), (err, res) => {
 });
 
 // Custom handlers
-require('./signup')(app, urlencodedParser);
+require('./signup')(app, jsonParser, passport);
 
 app.listen(app.get('port'), () => {
   console.log('Server is listening on port', app.get('port'));
