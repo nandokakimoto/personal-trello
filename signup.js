@@ -10,8 +10,6 @@ var signup = (app, jsonParser, passport) => {
   passport.deserializeUser(User.deserializeUser());
 
   app.post('/users/signup', jsonParser, (req, res) => {
-    console.log(req);
-
     var newUser = new User({
       name: req.body.name,
       username: req.body.email,

@@ -11,7 +11,7 @@ Code to improve NodeJS and Angular skills
 
 ## TODO
 
-Next features:
+Features:
 
 * Signup
   * Encode password
@@ -20,5 +20,3 @@ Next features:
 * Signin
 
 Improvements:
-
-* Refactoring `controller.js` to extract controller and routes
