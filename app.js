@@ -3,7 +3,7 @@
 var express = require('express');
 var passport = require('passport');
 var bodyParser = require('body-parser');
-var mongoose = require ("mongoose");
+var mongoose = require("mongoose");
 
 var app = express();
 app.set('port', (process.env.PORT || 3000));
@@ -22,7 +22,9 @@ app.use('/js', express.static(__dirname + '/node_modules/angular/'));
 app.use('/js', express.static(__dirname + '/node_modules/angular-route/'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
-// Setup passport
+// Initialize passport
+var User = require('./models/user')
+var pass = require('./config/pass');
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -45,17 +47,11 @@ app.get('/partials/:name', (req, res) => {
   res.render('partials/' + req.params.name);
 });
 
-// Connecto to the database
-mongoose.connect(app.get('mongo_url'), (err, res) => {
-  if (err) {
-    console.log('ERROR connecting to: ' + app.get('mongo_url') + '. ' + err);
-  } else {
-    console.log('Succeeded connected to: ' + app.get('mongo_url'));
-  }
-});
+// Database config
+require('./config/db')(app);
 
 // Custom handlers
-require('./signup')(app, jsonParser, passport);
+require('./signup')(app, jsonParser);
 
 app.listen(app.get('port'), () => {
   console.log('Server is listening on port', app.get('port'));

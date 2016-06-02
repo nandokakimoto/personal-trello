@@ -1,40 +1,24 @@
 'use strict';
 
-var User = require('./models/user');
-var LocalStrategy = require('passport-local').Strategy;
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
+var passport = require('passport');
 
-var signup = (app, jsonParser, passport) => {
-
-  passport.use(new LocalStrategy(User.authenticate()));
-  passport.serializeUser(User.serializeUser());
-  passport.deserializeUser(User.deserializeUser());
+var signup = (app, jsonParser) => {
 
   app.post('/users/signup', jsonParser, (req, res) => {
     var newUser = new User({
       name: req.body.name,
-      username: req.body.email,
-      password: req.body.password
+      username: req.body.email
     });
 
-    if(!newUser.name || !newUser.username || !newUser.password) {
-      response.sendStatus(400);
-    }
-
-    User.register(newUser, newUser.password, function(err, user) {
+    User.register(newUser, req.body.password, function(err, user) {
       if (err) {
-        return res.render('partials/signup', { error : err.message });
+        return res.status(400).json(err);
       }
 
-      passport.authenticate('local')(req, res, function() {
-        req.session.save(function (err) {
-          if (err) {
-            return next(err);
-          }
-          res.redirect('/');
-        });
-      });
+      res.sendStatus(200);
     });
-
   });
 };
 
