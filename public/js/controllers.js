@@ -23,4 +23,26 @@ angular.module('customTrello')
       );
     };
 
+  }])
+  .controller('SigninCtrl', ['$scope', '$http', function($scope, $http){
+    $scope.user = {
+      email: 'nandokakimoto@gmail.com',
+      password: '12345678'
+    };
+
+    $scope.submitForm = function(){
+      $http({
+        method: 'POST',
+        url: '/users/signin',
+        data: $scope.user
+      }).then(
+        function success(response){
+          alert('success');
+        },
+        function error(response){
+          alert('error');
+        }
+      );
+    };
+
   }]);

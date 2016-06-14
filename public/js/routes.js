@@ -14,7 +14,7 @@ angular.module('customTrello')
         }).
         when('/signin', {
           templateUrl: 'partials/signin',
-          controller: ''
+          controller: 'SigninCtrl'
         }).
         otherwise({
           redirectTo: '/home'

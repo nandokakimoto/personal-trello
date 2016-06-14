@@ -1,7 +1,22 @@
 //- signin.pug
 
+block stylesheets
+  link(href="/css/signup.css", rel="stylesheet")
+
 block title
   title Sign-in with e-mail and password
 
 block content
-  h1 Sign-in
+  div.container.center-container.signup-container
+    div.row
+      h1 Log in to Trello
+      form#signup-form(ng-submit="submitForm()")
+        div.form-group
+          label(for="email-address") Email
+          input(type="email", id="email-address", name="email", class="form-control", ng-model="user.email", placeholder="e.g., ender@battle.edu", required="true")
+        div.form-group
+          label(for="password") Password
+          input(type="password", id="password", name="password", class="form-control", ng-model="user.password", placeholder="e.g., ********", required="true")
+        button(type="submit", class="btn btn-success") Log in
+    div.row.signin
+      p Don't have an account? #[a(href="#/signup") Create a Trello Account].

@@ -10,7 +10,7 @@ block content
   div.container.center-container.signup-container
     div.row
       h1 Create a Trello Account
-      form#signup-form(ng-controller="SignupCtrl", ng-submit="submitForm()")
+      form#signup-form(ng-submit="submitForm()")
         div.form-group
           label(for="name") Name
           input(id="name", name="name", class="form-control", ng-model="user.name", placeholder="e.g., Ender Wiggin", required="true")
