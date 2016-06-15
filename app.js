@@ -51,7 +51,7 @@ app.get('/partials/:name', (req, res) => {
 require('./lib/config/db')(app);
 
 // Custom handlers
-require('./lib/controllers/signup')(app, jsonParser);
+require('./lib/config/routes')(app, jsonParser);
 
 app.listen(app.get('port'), () => {
   console.log('Server is listening on port', app.get('port'));
