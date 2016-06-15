@@ -23,8 +23,8 @@ app.use('/js', express.static(__dirname + '/node_modules/angular-route/'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
 // Initialize passport
-var User = require('./models/user')
-var pass = require('./config/pass');
+var User = require('./lib/models/user')
+var pass = require('./lib/config/pass');
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -48,10 +48,10 @@ app.get('/partials/:name', (req, res) => {
 });
 
 // Database config
-require('./config/db')(app);
+require('./lib/config/db')(app);
 
 // Custom handlers
-require('./signup')(app, jsonParser);
+require('./lib/controllers/signup')(app, jsonParser);
 
 app.listen(app.get('port'), () => {
   console.log('Server is listening on port', app.get('port'));
