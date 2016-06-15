@@ -17,7 +17,7 @@ var signup = (app, jsonParser) => {
         return res.status(400).json(err);
       }
 
-      res.sendStatus(200);
+      res.status(200).json(newUser);
     });
   });
 };

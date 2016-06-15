@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('customTrello')
-  .controller('SignupCtrl', ['$scope', '$http', function($scope, $http){
+  .controller('SignupCtrl', function($scope, $http, $rootScope, $location){
     $scope.user = {
       name: 'Fernando Kakimoto',
       email: 'nandokakimoto@gmail.com',
@@ -15,16 +15,16 @@ angular.module('customTrello')
         data: $scope.user
       }).then(
         function success(response){
-          alert('success');
+          $rootScope.currentUser = response.data;
+          $location.path('/');
         },
         function error(response){
           alert('error');
         }
       );
     };
-
-  }])
-  .controller('SigninCtrl', ['$scope', '$http', function($scope, $http){
+  })
+  .controller('SigninCtrl', function($scope, $http){
     $scope.user = {
       email: 'nandokakimoto@gmail.com',
       password: '12345678'
@@ -44,5 +44,4 @@ angular.module('customTrello')
         }
       );
     };
-
-  }]);
+  });
