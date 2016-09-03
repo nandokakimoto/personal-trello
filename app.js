@@ -4,10 +4,14 @@ var express = require('express');
 var passport = require('passport');
 var bodyParser = require('body-parser');
 var mongoose = require("mongoose");
+var logger = require('morgan');
 
 var app = express();
 app.set('port', (process.env.PORT || 3000));
 app.set('mongo_url', (process.env.MONGODB_URI || 'mongodb://localhost/custom_trello'));
+
+// Friendly logging
+app.use(logger('dev'));
 
 // Create application/x-www-form-urlencoded parser
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
@@ -20,6 +24,9 @@ app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
 app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
 app.use('/js', express.static(__dirname + '/node_modules/angular/'));
 app.use('/js', express.static(__dirname + '/node_modules/angular-route/'));
+app.use('/js', express.static(__dirname + '/node_modules/angular-resource/'));
+app.use('/js', express.static(__dirname + '/node_modules/angular-cookies/'));
+app.use('/js', express.static(__dirname + '/node_modules/angular-sanitize/'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 
 // Initialize passport
