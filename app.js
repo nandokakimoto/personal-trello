@@ -14,10 +14,15 @@ app.set('mongo_url', (process.env.MONGODB_URI || 'mongodb://localhost/custom_tre
 app.use(logger('dev'));
 
 // Create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false });
+bodyParser.urlencoded({ extended: false });
+app.use(bodyParser.json());
 
-// Create application/json parser
-var jsonParser = bodyParser.json();
+// Set expiress session parameters
+app.use(require('express-session')({
+  secret: 'e37bbaa4fc8c40853973e112daf8d25cd31e06be149f885f183453531f217776',
+  resave: false,
+  saveUninitialized: false
+}));
 
 // Serve static files from node_modules folder
 app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
@@ -58,7 +63,7 @@ app.get('/partials/:name', (req, res) => {
 require('./lib/config/db')(app);
 
 // Custom handlers
-require('./lib/config/routes')(app, jsonParser);
+require('./lib/config/routes')(app);
 
 app.listen(app.get('port'), () => {
   console.log('Server is listening on port', app.get('port'));
