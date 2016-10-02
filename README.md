@@ -1,22 +1,21 @@
-# Trello
+# Personal Trello
 
-Code to improve NodeJS and Angular skills
-
-* MongoDB
-* Express
-* Angular
-* Node
+Personal project to learn the [MEAN stack](http://mean.io/#!/).
+See it live on https://personal-trello.herokuapp.com.
 
 *Requires MongDB server running*
 
-## TODO
-
-Features:
+## Next Features
 
 * Signup
-  * Encode password
-  * Email taken validation
+  * Encode password.
+  * Add validation for e-mail taken.
 
 * Signin
+  * Add validation for wrong user/password.
 
-Improvements:
+* Create board
+
+## Improvements
+
+* Include unit/integration tests.
