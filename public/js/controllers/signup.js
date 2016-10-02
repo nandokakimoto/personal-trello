@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('customTrello')
+angular.module('personalTrello')
   .controller('SignupCtrl', function($scope, $http, $rootScope, $location){
     $scope.user = {};
 

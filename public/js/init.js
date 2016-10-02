@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('customTrello', [
+angular.module('personalTrello', [
   'ngCookies',
   'ngResource',
   'ngSanitize',

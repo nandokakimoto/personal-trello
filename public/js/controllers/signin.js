@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('customTrello')
+angular.module('personalTrello')
   .controller('SigninCtrl', function($scope, $http){
     $scope.user = {
       email: 'nandokakimoto@gmail.com',

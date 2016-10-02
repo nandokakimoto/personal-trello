@@ -1,6 +1,6 @@
 //- home.pug
 doctype html
-html(lang="en", ng-app="customTrello")
+html(lang="en", ng-app="personalTrello")
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible", content="IE=edge")
@@ -31,12 +31,13 @@ html(lang="en", ng-app="customTrello")
             span.icon-bar
           <a class="navbar-brand" href="#"></a>
 
-        div#navbar.collapse.navbar-collapse
+        div(id="navbar.collapse.navbar-collapse", ng-controller="HeaderCtrl")
           ul.nav.navbar-nav
             li.active
               a(href="/") Home
-
-
+          ul(class="nav navbar-nav navbar-right", ng-show="currentUser")
+            li
+              button(class="btn btn-default navbar-btn", ng-click="logout()") Sign out
     div#main-container.container
       div.starter-template
         div(ng-view)
@@ -51,6 +52,7 @@ html(lang="en", ng-app="customTrello")
 
     script(src="/js/init.js")
     script(src="/js/routes.js")
+    script(src="/js/controllers/header.js")
     script(src="/js/controllers/signup.js")
     script(src="/js/controllers/signin.js")
     script(src="/js/services/session.js")

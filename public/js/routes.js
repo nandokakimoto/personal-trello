@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('customTrello')
+angular.module('personalTrello')
   .config(['$routeProvider',
     function($routeProvider) {
       $routeProvider.
