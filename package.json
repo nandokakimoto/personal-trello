@@ -22,6 +22,7 @@
     "body-parser": "^1.15.1",
     "bootstrap": "^3.3.6",
     "express": "^4.13.4",
+    "express-session": "^1.14.1",
     "less-middleware": "^2.1.0",
     "mongoose": "^4.4.17",
     "morgan": "^1.7.0",
