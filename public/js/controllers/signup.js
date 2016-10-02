@@ -2,11 +2,7 @@
 
 angular.module('customTrello')
   .controller('SignupCtrl', function($scope, $http, $rootScope, $location){
-    $scope.user = {
-      name: 'Fernando Kakimoto',
-      email: 'nandokakimoto@gmail.com',
-      password: '12345678'
-    };
+    $scope.user = {};
 
     $scope.submitForm = function(){
       $http({
