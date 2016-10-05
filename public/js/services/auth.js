@@ -20,6 +20,19 @@ angular.module('personalTrello')
           function(err) {
             return cb(err.data);
           });
+      },
+      login: (user, callback) => {
+        var cb = callback || angular.noop;
+        Session.save({ email: user.email, password: user.password},
+          (user) => {
+            console.log('success', user);
+            $rootScope.currentUser = user;
+            return cb();
+          },
+          (err) => {
+            console.log('error', err);
+            return cb(err.data);
+          });
       }
     };
   })
