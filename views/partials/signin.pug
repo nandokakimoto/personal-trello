@@ -11,6 +11,8 @@ block content
     div.row
       h1 Log in to Trello
       form#signup-form(ng-submit="submitForm()")
+        div(class="form-group" ng-show="errorMessage")
+          div(class="alert alert-danger" role="alert") {{ errorMessage }}
         div.form-group
           label(for="email-address") Email
           input(type="email", id="email-address", name="email", class="form-control", ng-model="user.email", placeholder="e.g., ender@battle.edu", required="true")
