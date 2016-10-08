@@ -3,8 +3,11 @@
 angular.module('personalTrello')
   .controller('SignupCtrl', function($scope, $http, $rootScope, $location){
     $scope.user = {};
+    $scope.errorMessages = "";
 
     $scope.submitForm = function(){
+      $scope.errorMessages = [];
+
       $http({
         method: 'POST',
         url: '/users/signup',
@@ -15,7 +18,10 @@ angular.module('personalTrello')
           $location.path('/');
         },
         function error(response){
-          alert('error');
+          var errors = response.data.errors;
+          angular.forEach(errors, function(value, field) {
+            $scope.errorMessages.push(value.message);
+          });
         }
       );
     };

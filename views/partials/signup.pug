@@ -11,6 +11,9 @@ block content
     div.row
       h1 Create a Trello Account
       form#signup-form(ng-submit="submitForm()")
+        div(class="form-group" ng-show="errorMessages.length")
+          ul(class="alert alert-danger" role="alert")
+            li(ng-repeat="error in errorMessages") {{ error }}
         div.form-group
           label(for="name") Name
           input(id="name", name="name", class="form-control", ng-model="user.name", placeholder="e.g., Ender Wiggin", required="true")
