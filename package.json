@@ -4,7 +4,9 @@
   "description": "Custom Trello application",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cp -R node_modules/font-awesome/fonts ./public/",
+    "start": "nodemon app.js"
   },
   "keywords": [
     "node",
@@ -23,6 +25,7 @@
     "bootstrap": "^3.3.6",
     "express": "^4.13.4",
     "express-session": "^1.14.1",
+    "font-awesome": "^4.6.3",
     "less-middleware": "^2.1.0",
     "mongoose": "^4.4.17",
     "morgan": "^1.7.0",

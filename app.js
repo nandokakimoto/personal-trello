@@ -33,6 +33,8 @@ app.use('/js', express.static(__dirname + '/node_modules/angular-resource/'));
 app.use('/js', express.static(__dirname + '/node_modules/angular-cookies/'));
 app.use('/js', express.static(__dirname + '/node_modules/angular-sanitize/'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+app.use('/css', express.static(__dirname + '/node_modules/font-awesome/css'));
+app.use('/public/fonts', express.static(__dirname + '/node_modules/font-awesome/fonts'));
 
 // Initialize passport
 var User = require('./lib/models/user')
