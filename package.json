@@ -4,7 +4,7 @@
   "description": "Custom Trello application",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha --reporter spec",
     "postinstall": "cp -R node_modules/font-awesome/fonts ./public/",
     "start": "nodemon app.js"
   },
@@ -23,10 +23,12 @@
     "angular-sanitize": "^1.5.5",
     "body-parser": "^1.15.1",
     "bootstrap": "^3.3.6",
+    "chai": "^3.5.0",
     "express": "^4.13.4",
     "express-session": "^1.14.1",
     "font-awesome": "^4.6.3",
     "less-middleware": "^2.1.0",
+    "mocha": "^3.1.1",
     "mongoose": "^4.4.17",
     "morgan": "^1.7.0",
     "passport": "^0.3.2",
