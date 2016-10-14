@@ -3,8 +3,8 @@
 var express = require('express');
 var passport = require('passport');
 var bodyParser = require('body-parser');
-var mongoose = require("mongoose");
 var logger = require('morgan');
+var path = require('path');
 
 var app = express();
 app.set('port', (process.env.PORT || 3000));
@@ -14,7 +14,7 @@ app.set('mongo_url', (process.env.MONGODB_URI || 'mongodb://localhost/custom_tre
 app.use(logger('dev'));
 
 // Create application/x-www-form-urlencoded parser
-bodyParser.urlencoded({ extended: false });
+bodyParser.urlencoded({extended: false});
 app.use(bodyParser.json());
 
 // Set expiress session parameters
@@ -25,34 +25,44 @@ app.use(require('express-session')({
 }));
 
 // Serve static files from node_modules folder
-app.use('/js', express.static(__dirname + '/node_modules/jquery/dist'));
-app.use('/js', express.static(__dirname + '/node_modules/bootstrap/dist/js'));
-app.use('/js', express.static(__dirname + '/node_modules/angular/'));
-app.use('/js', express.static(__dirname + '/node_modules/angular-route/'));
-app.use('/js', express.static(__dirname + '/node_modules/angular-resource/'));
-app.use('/js', express.static(__dirname + '/node_modules/angular-cookies/'));
-app.use('/js', express.static(__dirname + '/node_modules/angular-sanitize/'));
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
-app.use('/css', express.static(__dirname + '/node_modules/font-awesome/css'));
-app.use('/public/fonts', express.static(__dirname + '/node_modules/font-awesome/fonts'));
+app.use('/js', express.static(
+  path.join(__dirname, '/node_modules/jquery/dist')));
+app.use('/js', express.static(
+  path.join(__dirname, '/node_modules/bootstrap/dist/js')));
+app.use('/js', express.static(
+  path.join(__dirname, '/node_modules/angular/')));
+app.use('/js', express.static(
+  path.join(__dirname, '/node_modules/angular-route/')));
+app.use('/js', express.static(
+  path.join(__dirname, '/node_modules/angular-resource/')));
+app.use('/js', express.static(
+  path.join(__dirname, '/node_modules/angular-cookies/')));
+app.use('/js', express.static(
+  path.join(__dirname, '/node_modules/angular-sanitize/')));
+app.use('/css', express.static(
+  path.join(__dirname, '/node_modules/bootstrap/dist/css')));
+app.use('/css', express.static(
+  path.join(__dirname, '/node_modules/font-awesome/css')));
+app.use('/public/fonts', express.static(
+  path.join(__dirname, '/node_modules/font-awesome/fonts')));
 
 // Initialize passport
-var User = require('./lib/models/user')
-var pass = require('./lib/config/pass');
+require('./lib/models/user');
+require('./lib/config/pass');
 app.use(passport.initialize());
 app.use(passport.session());
 
 // Compile less files
 var less = require('less-middleware');
-app.use(less(__dirname + '/public'));
-app.use(express.static(__dirname + '/public'));
+app.use(less(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 // Prepare app to use pug template engine
-app.set('views', __dirname + '/views');
+app.set('views', path.join(__dirname, '/views'));
 app.set('view engine', 'pug');
 
 // Default route
-app.get('/', function(req, res){
+app.get('/', function(req, res) {
   res.render('home');
 });
 
