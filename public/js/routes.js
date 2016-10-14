@@ -1,22 +1,22 @@
 'use strict';
 
-angular.module('personalTrello')
+angular.module('personalTrello') // eslint-disable-line no-undef
   .config(['$routeProvider',
     function($routeProvider) {
-      $routeProvider.
-        when('/home', {
+      $routeProvider
+        .when('/home', {
           templateUrl: 'partials/welcome',
           controller: ''
-        }).
-        when('/signup', {
+        })
+        .when('/signup', {
           templateUrl: 'partials/signup',
           controller: 'SignupCtrl'
-        }).
-        when('/signin', {
+        })
+        .when('/signin', {
           templateUrl: 'partials/signin',
           controller: 'SigninCtrl'
-        }).
-        otherwise({
+        })
+        .otherwise({
           redirectTo: '/home'
         });
     }
