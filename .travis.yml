@@ -4,10 +4,19 @@ node_js:
   - "4"
   - "5"
 
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-5
+
 env:
+  - CXX=g++-5
   - NODE_ENV=TEST
 
 before_script:
   - npm install -g gulp
+  - npm install -g node-gyp
 
 script: gulp
