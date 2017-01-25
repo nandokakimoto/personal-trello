@@ -6,6 +6,11 @@ angular.module('personalTrello', [ // eslint-disable-line no-undef
   'ngSanitize',
   'ngRoute'
 ])
+.config(function($qProvider) {
+  // Handles 'Possibly unhandled rejection'
+  // See https://github.com/angular-ui/ui-router/issues/2889 for more details.
+  $qProvider.errorOnUnhandledRejections(false);
+})
 .run(function($rootScope, $location, Auth) {
   // watching the value of the currentUser variable.
   $rootScope.$watch('currentUser', function(currentUser) {

@@ -1,7 +1,7 @@
 h1 Trello
 p Trello is the free, flexible, and visual way to organize anything with anyone.
 div(ng-hide="currentUser")
-  a(type="button", class="btn btn-success", href="#/signup", data-track="Sign Up") Sign Up – It’s Free.
-  a(href="#/signin").text-muted.signin-link Log in...
+  a(type="button", class="btn btn-success", href="#!/signup", data-track="Sign Up") Sign Up – It’s Free.
+  a(href="#!/signin").text-muted.signin-link Log in...
 div(ng-show="currentUser")
   p Welcome, {{ currentUser.username }}!
